@@ -92,7 +92,7 @@ function HomePage() {
     const onScroll = () => setCompact(window.scrollY > 80);
     const onPointer = (event: globalThis.PointerEvent) => {
       const target = event.target instanceof Element ? event.target.closest<HTMLElement>("[data-cursor]") : null;
-      setCursor({ x: event.clientX, y: event.clientY, label: target?.dataset.cursor ?? "" });
+      setCursor({ x: event.clientX, y: event.clientY, label: target?.dataset["cursor"] ?? "" });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("pointermove", onPointer, { passive: true });
