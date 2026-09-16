@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, type FormEvent, type PointerEvent } from "
 import workAudio from "../assets/work-audio.jpg";
 import workHealthcare from "../assets/work-healthcare.jpg";
 import workProperty from "../assets/work-property.jpg";
+import logoAsset from "../assets/4nds-network-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -54,7 +55,7 @@ const processSteps = [
 const industries = ["HEALTHCARE", "LEGAL", "INSURANCE", "REAL ESTATE", "FINANCE", "ECOMMERCE", "TELECOM", "EDUCATION", "ENTERTAINMENT", "MANUFACTURING", "RESTAURANTS", "TRANSPORT"];
 
 function Mark() {
-  return <span className="brand-mark" aria-label="4NDS Network"><b>4</b>NDS<span>•</span></span>;
+  return <img className="brand-logo" src={logoAsset.url} alt="4NDS Network of Digital Solutions" width={622} height={282} />;
 }
 
 function NetworkField() {
@@ -91,7 +92,7 @@ function HomePage() {
     const onScroll = () => setCompact(window.scrollY > 80);
     const onPointer = (event: globalThis.PointerEvent) => {
       const target = event.target instanceof Element ? event.target.closest<HTMLElement>("[data-cursor]") : null;
-      setCursor({ x: event.clientX, y: event.clientY, label: target?.dataset.cursor ?? "" });
+      setCursor({ x: event.clientX, y: event.clientY, label: target?.dataset["cursor"] ?? "" });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("pointermove", onPointer, { passive: true });
